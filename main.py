@@ -13,12 +13,11 @@ LIVING_OBJECTS = ["Person", "Dog", "Cat", "Teddy bear"]
 
 
 async def connect():
-    creds = Credentials(
-        type='robot-location-secret',
-        payload='SECRET_FROM_VIAM_APP')
-    opts = RobotClient.Options(
-        refresh_interval=0,
-        dial_options=DialOptions(credentials=creds)
+    opts = RobotClient.Options.with_api_key(
+      # Replace "<API-KEY>" (including brackets) with your robot's api key
+      api_key='<API-KEY>',
+      # Replace "<API-KEY-ID>" (including brackets) with your robot's api key id
+      api_key_id='<API-KEY-ID>'
     )
     return await RobotClient.at_address('guardian-main.vw3iu72d8n.viam.cloud', opts)
 
@@ -93,7 +92,7 @@ async def main():
     robot = await connect()
     local = Board.from_robot(robot, 'local')
     cam = Camera.from_robot(robot, "cam")
-    img = await cam.get_image()
+    img = await cam.get_image(mime_type="image/jpeg")
     servo = Servo.from_robot(robot, "servo")
     red_leds = LedGroup([
         await local.gpio_pin_by_name('22'),
