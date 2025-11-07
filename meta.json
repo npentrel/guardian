@@ -1,0 +1,30 @@
+{
+  "$schema": "https://dl.viam.dev/module.schema.json",
+  "module_id": "naomi:guardian-logic",
+  "visibility": "public",
+  "url": "https://github.com/npentrel/guardian",
+  "description": "Modular button component: control",
+  "models": [
+    {
+      "api": "rdk:component:button",
+      "model": "naomi:guardian-logic:control",
+      "short_description": "Run guardian logic",
+      "markdown_link": "README.md#model-naomiguardian-logiccontrol"
+    }
+  ],
+  "applications": null,
+  "markdown_link": "README.md",
+  "entrypoint": "dist/main",
+  "first_run": "",
+  "build": {
+    "build": "./build.sh",
+    "setup": "./setup.sh",
+    "path": "dist/archive.tar.gz",
+    "arch": [
+      "linux/amd64",
+      "linux/arm64",
+      "darwin/arm64",
+      "windows/amd64"
+    ]
+  }
+}
